@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ScoutScript : MonoBehaviour {
-    Animator anim; 
+    Animator anim;
     public Transform track;
     public GameObject projectile;
     private float nextFire = 0f;//controls first instance of instantiated object
@@ -10,10 +10,11 @@ public class ScoutScript : MonoBehaviour {
     private float moveSpeed = 2;
     private float slowDown;
     private bool fire = false;
+    private SpriteRenderer rend;
 
     void Start() {
+        rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-
     }
     // Update is called once per frame
     void Update() {
@@ -43,6 +44,17 @@ public class ScoutScript : MonoBehaviour {
                 anim.SetBool("FiringState", true);
                 fire = true;
             }
+            if (other.tag == "Bullet") {
+                Destroy(anim);
+                rend.sprite = Resources.Load<Sprite>("UsedAssets/oryx_16bit_scifi_creatures_126");
+                StartCoroutine("Death");
+            }
         }
+
     }
+    IEnumerator Death() {
+        yield return new WaitForSeconds(.1f);
+        Destroy(this.gameObject);
+    }
+
 }
