@@ -63,18 +63,6 @@
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -86,14 +74,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Boss.cs" />
+    <Compile Include="Assets\Scripts\Enemies\LieutScript.cs" />
     <Compile Include="Assets\Scripts\Enemies\ScoutScript.cs" />
     <Compile Include="Assets\Scripts\Global\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Global\Projectile.cs" />
+    <Compile Include="Assets\Scripts\HUD.cs" />
+    <Compile Include="Assets\Scripts\Limiter.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\PlatScript.cs" />
     <Compile Include="Assets\Scripts\Player\TurretScript.cs" />
     <Compile Include="Assets\Scripts\Player\TurretShoot.cs" />
+    <Compile Include="Assets\Scripts\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\RotateBoss.cs" />
+    <Compile Include="Assets\Scripts\ScoutEnemySpawner.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\PressStart2P-Regular\OFL.txt" />
     <None Include="Assets\Sprites\oryx_license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

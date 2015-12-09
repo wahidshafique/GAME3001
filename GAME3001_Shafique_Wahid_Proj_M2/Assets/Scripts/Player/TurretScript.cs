@@ -6,7 +6,7 @@ public class TurretScript : MonoBehaviour
     Camera cam;
     Transform my;
     Rigidbody2D body;
-    private float rotationSpeed = 10;
+    public GameObject[] upgrades;
     // Use this for initialization
     void Awake()
     {
@@ -17,6 +17,7 @@ public class TurretScript : MonoBehaviour
 
     void Update()
     {
+
         float camDis = cam.transform.position.y - my.position.y;
 
         Vector3 mouse = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDis));

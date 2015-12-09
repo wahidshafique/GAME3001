@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void StartGame () {
-		Application.LoadLevel("Level1");
+		Application.LoadLevel("Level");
 	}
 	
 	public void MainMenu () {

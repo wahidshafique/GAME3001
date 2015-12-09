@@ -3,16 +3,20 @@ using System.Collections;
 
 public class ScoutScript : MonoBehaviour {
     Animator anim;
-    public Transform track;
+    private Transform track;
     public GameObject projectile;
+
+    private SpriteRenderer rend;
     private float nextFire = 0f;//controls first instance of instantiated object
     private float fireRate = 0.5f; //intervals for projectile to emit
     private float moveSpeed = 2;
     private float slowDown;
     private bool fire = false;
-    private SpriteRenderer rend;
+    private int health = 1;
+
 
     void Start() {
+        track = GameObject.Find("Turret").transform;
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
@@ -43,14 +47,20 @@ public class ScoutScript : MonoBehaviour {
                 moveSpeed = 0f;
                 anim.SetBool("FiringState", true);
                 fire = true;
+                health += 1;
             }
             if (other.tag == "Bullet") {
-                Destroy(anim);
-                rend.sprite = Resources.Load<Sprite>("UsedAssets/oryx_16bit_scifi_creatures_126");
-                StartCoroutine("Death");
+                health -= 1;
+                Destroy(other.gameObject);
+                if (health == 0) {
+                    PlayerData.GetInstance.score += 1;
+                    moveSpeed = 0;
+                    Destroy(anim);
+                    rend.sprite = Resources.Load<Sprite>("UsedAssets/oryx_16bit_scifi_creatures_126");
+                    StartCoroutine("Death");
+                }
             }
         }
-
     }
     IEnumerator Death() {
         yield return new WaitForSeconds(.1f);
